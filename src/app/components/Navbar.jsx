@@ -2,6 +2,7 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
+import { FiHome, FiBox, FiPlusCircle, FiLogIn, FiLogOut } from "react-icons/fi";
 
 const Navbar = () => {
   const { data: session } = useSession();
@@ -9,14 +10,23 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <Link href="/">Home</Link>
+        <Link href="/" className="flex items-center gap-2">
+          <FiHome /> Home
+        </Link>
       </li>
       <li>
-        <Link href="/products">Products</Link>
+        <Link href="/products" className="flex items-center gap-2">
+          <FiBox /> Products
+        </Link>
       </li>
       {session && (
         <li>
-          <Link href="/dashboard/add-product">Add Product</Link>
+          <Link
+            href="/dashboard/add-product"
+            className="flex items-center gap-2"
+          >
+            <FiPlusCircle /> Add Product
+          </Link>
         </li>
       )}
     </>
@@ -56,12 +66,22 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          {
-            session ? 
-            <button className="btn" onClick={() => signOut()}>Logout</button>
-            :
-            <button className="btn" onClick={()=> signIn()}>Login</button>
-          }
+          {/* Auth buttons */}
+          {session ? (
+            <button
+              className="btn flex items-center gap-2"
+              onClick={() => signOut()}
+            >
+              <FiLogOut /> Logout
+            </button>
+          ) : (
+            <button
+              className="btn flex items-center gap-2"
+              onClick={() => signIn()}
+            >
+              <FiLogIn /> Login
+            </button>
+          )}
         </div>
       </div>
     </div>
