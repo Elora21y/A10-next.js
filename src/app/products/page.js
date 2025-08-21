@@ -11,7 +11,7 @@ const ProductsPage = () => {
     fetch("/api/products")
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data.slice(0, 4));
+        setProducts(data);
         setLoading(false);
       })
       .catch((err) => {
