@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 // import image from "../../../../public";
 import axios from "axios";
+import Loading from "@/app/loading";
 
 export default function AddProductPage() {
   const [profileLoading, setProfileLoading] = useState(false);
@@ -44,9 +45,7 @@ export default function AddProductPage() {
     }
   };
 
-  if (status === "loading") {
-    return <p className="p-6">Loading...</p>;
-  }
+  if (status === "loading") return <Loading/>
 
   if (!session) {
     return null;
@@ -157,7 +156,7 @@ export default function AddProductPage() {
           {/* Submit */}
           <button
             type="submit"
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            className="btn btn-info outline rounded-2xl hover:btn-active"
           >
             Add Product
           </button>

@@ -1,13 +1,14 @@
-// import { useParams } from "react-router-dom";
-// import { useParams } from "next/navigation";
-import { products } from "@/app/lib/products";
+
+import dbConnect from "@/app/lib/dbConnect";
+import { ObjectId } from "mongodb";
+import Image from "next/image";
 import { FaStar, FaBox, FaCheckCircle } from "react-icons/fa";
 
-const ProductDetails = ({params}) => {
-//   const { id } = useParams();
-const id= parseInt( params.id)
-// console.log(id)
-  const product = products.find((p) => p._id === id);
+const ProductDetails = async({params}) => {
+  const {id}= params
+ const productCollection = dbConnect("products");
+  const product = await productCollection.findOne({_id : new ObjectId(id)})
+// // console.log(id)
 
   if (!product) {
     return <p className="text-center text-red-500">Product not found!</p>;
@@ -17,7 +18,7 @@ const id= parseInt( params.id)
     <div className="max-w-4xl mx-auto bg-base-200">
       <div className="card p-6 shadow-2xl flex flex-col  md:flex-row justify-between md:items-center gap-6">
         <figure className="max-w-96">
-          <img src={product.image} alt={product.name} className="rounded-xl" />
+          <Image src={product.image} alt={product.name} className="rounded-xl object-cover object-center" width={400} height={400}/>
         </figure>
 
         <div className="card-body">

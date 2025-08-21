@@ -1,15 +1,38 @@
 "use client";
-import React from 'react';
-import ProductCard from './ProductCard';
+import React, { useEffect, useState } from "react";
+import ProductCard from "./ProductCard";
+import Loading from "../loading";
 
 const ProductHighlights = () => {
-    return (
-        <div>
-            <h2 className='text-xl font-semibold text-info sm:text-2xl md:text-3xl'>Our Recent Products</h2>
-            <div className='w-36 rounded-2xl text-info border-t-3 '></div>
-            <ProductCard/>
-        </div>
-    );
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data.slice(0, 4));
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  return (
+    <div>
+      <h2 className="text-xl font-semibold text-info sm:text-2xl md:text-3xl">
+        Our Recent Products
+      </h2>
+      <div className="w-36 rounded-2xl text-info border-t-3 "></div>
+      <ProductCard products={products} />
+    </div>
+  );
 };
 
 export default ProductHighlights;
