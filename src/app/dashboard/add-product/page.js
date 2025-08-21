@@ -1,6 +1,7 @@
 "use client";
-
-import { useState } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function AddProductPage() {
   const [product, setProduct] = useState({
@@ -15,6 +16,23 @@ export default function AddProductPage() {
     image: "",
     extraInfo: "" // optional field for any product
   });
+   const { data: session, status } = useSession();
+  const router = useRouter();
+
+  // যদি login না থাকে → redirect করবো
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/login");
+    }
+  }, [status, router]);
+
+  if (status === "loading") {
+    return <p className="p-6">Loading...</p>;
+  }
+
+  if (!session) {
+    return null; // redirect হওয়া পর্যন্ত কিছু দেখাবে না
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
