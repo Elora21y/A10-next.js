@@ -1,31 +1,35 @@
 "use client";
 import React from "react";
+// import banner from '/shopping.jpg'
+import Image from "next/image";
 
 const Hero = () => {
   return (
     <div>
       <div
-        className="hero min-h-screen"
+        className="hero min-h-[80vh] bg-cover bg-center relative"
         style={{
-          backgroundImage:
-            "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
+          backgroundImage: `url(/shopping.jpg)`,
         }}
       >
-        <div className="hero-overlay"></div>
-        <div className="hero-content text-neutral-content text-center">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-            <p className="mb-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
-            <button className="btn btn-primary">Get Started</button>
-          </div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/60"></div>
+
+        {/* Content */}
+        <div className="relative z-5 max-w-3xl text-left px-6 lg:px-12">
+          <h1 className="mb-5 text-4xl md:text-5xl font-bold text-white leading-tight">
+            Discover the Future of Online Shopping
+          </h1>
+          <p className="mb-6 text-lg text-gray-200">
+            Explore thousands of products, enjoy exclusive deals, 
+            and experience a seamless shopping journey — all in one place.
+          </p>
+          <button className="btn btn-info rounded-3xl">Start Shopping</button>
         </div>
       </div>
     </div>
   );
 };
+
 
 export default Hero;

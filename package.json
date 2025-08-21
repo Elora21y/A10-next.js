@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "axios": "^1.11.0",
     "daisyui": "^5.0.50",
     "next": "15.5.0",
     "next-auth": "^4.24.11",

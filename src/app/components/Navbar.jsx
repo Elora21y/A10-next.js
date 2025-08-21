@@ -12,7 +12,7 @@ const Navbar = () => {
         <Link href="/">Home</Link>
       </li>
       <li>
-        <Link href="/products">All Products</Link>
+        <Link href="/products">Products</Link>
       </li>
       {session && (
         <li>

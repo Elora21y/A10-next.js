@@ -16,7 +16,7 @@ export const authOptions= {
       const user = credentials
 
       if (user.email && user.password) {
-        return user
+        return user //router.push(`/products`)
       } else {
         return null
       }
