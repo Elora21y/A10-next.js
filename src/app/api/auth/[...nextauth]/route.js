@@ -16,7 +16,7 @@ export const authOptions= {
       const user = credentials
 
       if (user.email && user.password) {
-        return user //router.push(`/products`)
+        return user
       } else {
         return null
       }
@@ -28,6 +28,11 @@ export const authOptions= {
   })
   ],
   secret: process.env.NEXTAUTH_SECRET,
+  callbacks: {
+    async redirect({ url, baseUrl }) {
+      return "/products"; 
+    },
+  },
 }
 
 const handler = NextAuth(authOptions);
