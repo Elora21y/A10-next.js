@@ -1,26 +1,27 @@
 # 🛒 Prodify - E-commerce Project
 
-This is a full-stack **E-commerce demo application** built with **Next.js 13 (App Router)**, **MongoDB**, and **NextAuth** for authentication.  
-Users can sign in using **GitHub OAuth** or custom credentials, explore products, and manage their shopping experience.  
+A simple **E-commerce demo web application** built with **Next.js 13 (App Router)**, **MongoDB**, and **NextAuth**.  
+It includes user authentication (GitHub OAuth & custom credentials), product browsing, and a modern UI.
 
-🔗 **Live Site:** [Prodify E-commerce](https://assignment-10-aszseksb0-elora21ys-projects.vercel.app)
-
----
-
-## 🚀 Features
-- **Authentication** with NextAuth (GitHub & Credentials)
-- **Product Management** (Create, Read)
-- **MongoDB Database** Integration
--  Modern UI with **Tailwind CSS**
--  Fully deployed on **Vercel**
--  Image upload with **ImgBB API**
+🔗 **Live Site:** [Prodify](https://assignment-10-aszseksb0-elora21ys-projects.vercel.app)
 
 ---
 
-## 🛠️ Tech Stack
-- **Frontend:** Next.js 13 (App Router), React, TailwindCSS, DaisyUI  
-- **Backend:** Next.js API Routes  
-- **Database:** MongoDB (Atlas)  
-- **Authentication:** NextAuth (GitHub Provider & Credentials Provider)  
-- **Deployment:** Vercel  
+## 📖 Project Description
+Prodify is a demo e-commerce application where users can:
+- Register/Login using **GitHub** or their own credentials.
+- Explore available products.
+- Store data securely in **MongoDB Atlas**.
+- Experience a modern and responsive design with **TailwindCSS**.
 
+---
+
+## ⚙️ Setup & Installation
+
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/Elora21y/A10-next.js.git
+cd A10-next.js
+npm install
+create .env.local file
+npm run dev
